@@ -1,0 +1,444 @@
+/* =========================
+   Google Fonts
+========================= */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&family=Special+Elite&display=swap");
+
+/* =========================
+   CSS Variables
+========================= */
+
+:root {
+  --background-color: #30271f;
+  --background-light: #44372c;
+
+  --paper-color: #f4ead1;
+  --paper-light: #fffaf0;
+  --paper-dark: #d8c7a4;
+
+  --ink-color: #29231d;
+  --muted-ink-color: #716451;
+
+  --accent-color: #9b3a32;
+  --accent-hover-color: #ad493f;
+  --accent-dark-color: #6f2823;
+
+  --border-color: #786c5c;
+  --focus-color: rgba(155, 58, 50, 0.18);
+
+  --heading-font: "Special Elite", serif;
+  --interface-font: "IBM Plex Mono", monospace;
+  --body-font: "Inter", sans-serif;
+
+  --small-radius: 4px;
+  --medium-radius: 8px;
+  --large-radius: 12px;
+
+  --page-width: 960px;
+}
+
+/* =========================
+   CSS Reset
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* =========================
+   Page Layout
+========================= */
+
+body {
+  min-height: 100vh;
+  padding: 48px 20px 24px;
+  color: var(--ink-color);
+  font-family: var(--body-font);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.06),
+      transparent 35%
+    ),
+    linear-gradient(135deg, var(--background-light), var(--background-color));
+}
+
+main {
+  width: min(var(--page-width), 100%);
+  margin: 0 auto;
+}
+
+/* =========================
+   Header
+========================= */
+
+header {
+  width: min(var(--page-width), 100%);
+  margin: 0 auto 32px;
+  color: var(--paper-light);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 14px;
+  font-family: var(--heading-font);
+  font-size: clamp(2.5rem, 7vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+header p {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #ded2bd;
+  font-family: var(--interface-font);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* =========================
+   Message Form
+========================= */
+
+main section {
+  position: relative;
+  padding: 42px;
+  border: 2px solid var(--paper-dark);
+  border-radius: var(--medium-radius);
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      rgba(72, 61, 47, 0.07) 32px
+    ),
+    var(--paper-color);
+  box-shadow:
+    0 20px 40px rgba(20, 14, 10, 0.35),
+    inset 0 0 40px rgba(120, 95, 55, 0.08);
+}
+
+main section::before {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 170px;
+  height: 26px;
+  background: rgba(211, 191, 151, 0.78);
+  box-shadow: 0 3px 6px rgba(50, 35, 20, 0.18);
+  content: "";
+  transform: translateX(-50%) rotate(-1deg);
+}
+
+section h2 {
+  margin: 0 0 32px;
+  font-family: var(--heading-font);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* =========================
+   Form Layout
+========================= */
+
+form {
+  display: grid;
+  gap: 24px;
+}
+
+form > div {
+  display: grid;
+  gap: 9px;
+}
+
+label {
+  color: var(--ink-color);
+  font-family: var(--interface-font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* =========================
+   Form Elements
+========================= */
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid var(--border-color);
+  border-radius: 0;
+  outline: none;
+  color: var(--ink-color);
+  font-family: var(--interface-font);
+  background: rgba(255, 250, 240, 0.4);
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+input,
+select {
+  min-height: 52px;
+  padding: 13px 12px;
+}
+
+textarea {
+  min-height: 230px;
+  padding: 16px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--small-radius);
+  line-height: 1.8;
+  resize: vertical;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 30px,
+      rgba(74, 63, 49, 0.11) 31px
+    ),
+    rgba(255, 250, 240, 0.6);
+  box-shadow: inset 2px 2px 6px rgba(65, 49, 31, 0.08);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted-ink-color);
+  opacity: 0.85;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+  background-color: rgba(255, 252, 243, 0.7);
+}
+
+input:focus,
+select:focus {
+  border-bottom-color: var(--accent-color);
+  box-shadow: 0 4px 0 var(--focus-color);
+  transform: translateY(-1px);
+}
+
+textarea:focus {
+  border-color: var(--accent-color);
+  box-shadow:
+    inset 2px 2px 6px rgba(65, 49, 31, 0.08),
+    0 0 0 4px var(--focus-color);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   Generate Button
+========================= */
+
+#generate-button {
+  width: 100%;
+  min-height: 58px;
+  padding: 14px 22px;
+  border: 2px solid #4d1b17;
+  border-radius: var(--small-radius);
+  color: #fff9eb;
+  font-family: var(--heading-font);
+  font-size: 1.2rem;
+  letter-spacing: 1.4px;
+  cursor: pointer;
+  background: var(--accent-color);
+  box-shadow:
+    0 7px 0 var(--accent-dark-color),
+    0 12px 18px rgba(62, 23, 18, 0.25);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    background-color 180ms ease;
+}
+
+#generate-button:hover {
+  background: var(--accent-hover-color);
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 0 var(--accent-dark-color),
+    0 16px 22px rgba(62, 23, 18, 0.28);
+}
+
+#generate-button:active {
+  transform: translateY(5px);
+  box-shadow:
+    0 2px 0 var(--accent-dark-color),
+    0 5px 8px rgba(62, 23, 18, 0.22);
+}
+
+#generate-button:focus-visible {
+  outline: 3px dashed var(--paper-light);
+  outline-offset: 5px;
+}
+
+/* =========================
+   Generated Message
+========================= */
+
+.result-section {
+  margin-top: 34px;
+}
+
+.result-section::before {
+  transform: translateX(-50%) rotate(1deg);
+}
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 26px;
+}
+
+.result-header h2 {
+  margin: 0;
+  text-align: left;
+}
+
+#message-result {
+  min-height: 220px;
+  padding: 24px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--small-radius);
+  color: var(--ink-color);
+  font-family: var(--interface-font);
+  line-height: 1.9;
+  white-space: pre-wrap;
+  background:
+    repeating-linear-gradient(
+      transparent,
+      transparent 30px,
+      rgba(74, 63, 49, 0.1) 31px
+    ),
+    rgba(255, 250, 240, 0.72);
+  box-shadow: inset 2px 2px 8px rgba(65, 49, 31, 0.08);
+}
+
+/* =========================
+   Copy Button
+========================= */
+
+#copy-button {
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 9px 16px;
+  border: 2px solid var(--accent-dark-color);
+  border-radius: var(--small-radius);
+  color: var(--accent-dark-color);
+  font-family: var(--interface-font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: 0 4px 0 rgba(111, 40, 35, 0.25);
+  transition:
+    transform 120ms ease,
+    box-shadow 120ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
+}
+
+#copy-button:hover {
+  color: #fff9eb;
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--accent-dark-color);
+}
+
+#copy-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--accent-dark-color);
+}
+
+@media (max-width: 650px) {
+  .result-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .result-header h2 {
+    text-align: center;
+  }
+
+  #copy-button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+  margin-top: 30px;
+  color: #d7c9b1;
+  font-family: var(--interface-font);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+
+@media (max-width: 650px) {
+  body {
+    padding: 32px 14px 20px;
+  }
+
+  header {
+    margin-bottom: 26px;
+  }
+
+  header h1 {
+    letter-spacing: 2px;
+  }
+
+  main section {
+    padding: 34px 20px 26px;
+  }
+
+  main section::before {
+    width: 125px;
+  }
+
+  section h2 {
+    margin-bottom: 26px;
+  }
+
+  textarea {
+    min-height: 200px;
+  }
+}

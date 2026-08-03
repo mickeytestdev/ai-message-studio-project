@@ -21,7 +21,7 @@
     <header>
       <h1>AI Message Studio</h1>
 
-      <p>Polish, rewrite, or create messages with the help of AI.</p>
+      <p>Where ideas become beautifully written messages.</p>
     </header>
     <!-- =========================
        Main Content
@@ -106,6 +106,17 @@
       <div>
         <button type="submit" id="generate-button">✨ Generate Message</button>
       </div>
+      <section class="result-section">
+        <div class="result-header">
+          <h2>Your Generated Message</h2>
+
+          <button type="button" id="copy-button" hidden>Copy Message</button>
+        </div>
+
+        <div id="message-result" aria-live="polite">
+          Your generated message will appear here.
+        </div>
+      </section>
     </main>
 
     <!-- =========================
