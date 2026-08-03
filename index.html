@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Character Encoding -->
+    <meta charset="UTF-8" />
+
+    <!-- Mobile Responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Page Title -->
+    <title>AI Message Studio</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- =========================
+       Header
+  ========================== -->
+    <header>
+      <h1>AI Message Studio</h1>
+
+      <p>Polish, rewrite, or create messages with the help of AI.</p>
+    </header>
+    <!-- =========================
+       Main Content
+  ========================== -->
+    <main>
+      <!-- Message Form -->
+      <section>
+        <h2>Create or Rewrite Your Message</h2>
+
+        <form id="message-form">
+          <!-- Message Type -->
+          <div>
+            <label for="message-type">Message Type</label>
+
+            <select id="message-type" required>
+              <option value="">Select a message type</option>
+
+              <option value="email">Email</option>
+
+              <option value="letter">Letter</option>
+
+              <option value="professional-message">Professional Message</option>
+
+              <option value="text-message">Text Message</option>
+
+              <option value="custom-message">Custom Message</option>
+            </select>
+          </div>
+          <!-- Tone -->
+          <div>
+            <label for="message-tone">Tone</label>
+
+            <select id="message-tone" required>
+              <option value="">Select a tone</option>
+
+              <option value="professional">Professional</option>
+
+              <option value="friendly">Friendly</option>
+
+              <option value="casual">Casual</option>
+
+              <option value="formal">Formal</option>
+
+              <option value="warm">Warm</option>
+
+              <option value="playful">Playful</option>
+            </select>
+          </div>
+          <!-- Message or Rough Notes -->
+          <div>
+            <label for="message-notes">
+              Enter your message or rough notes
+            </label>
+
+            <textarea
+              id="message-notes"
+              rows="10"
+              placeholder="Paste a message you'd like to rewrite or describe what you'd like the AI to write..."
+              required
+            ></textarea>
+          </div>
+          <!-- Recipient -->
+          <div>
+            <label for="recipient"> Recipient (Optional) </label>
+
+            <input
+              type="text"
+              id="recipient"
+              placeholder="Example: Hiring Manager, Friend, Landlord"
+            />
+          </div>
+          <!-- Sender Name -->
+          <div>
+            <label for="sender-name"> Your Name or Signature (Optional) </label>
+
+            <input type="text" id="sender-name" placeholder="Example: Mickey" />
+          </div>
+          <!-- Generate Button -->
+        </form>
+      </section>
+      <!-- Generated Message -->
+      <div>
+        <button type="submit" id="generate-button">✨ Generate Message</button>
+      </div>
+    </main>
+
+    <!-- =========================
+       Footer
+  ========================== -->
+
+    <script src="script.js"></script>
+  </body>
+</html>
