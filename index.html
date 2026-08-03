@@ -28,96 +28,103 @@
   ========================== -->
     <main>
       <!-- Message Form -->
-      <section>
-        <h2>Create or Rewrite Your Message</h2>
+      <!-- Message Form -->
+<section>
+  <h2>Create or Rewrite Your Message</h2>
 
-        <form id="message-form">
-          <!-- Message Type -->
-          <div>
-            <label for="message-type">Message Type</label>
+  <form id="message-form">
+    <!-- Message Type -->
+    <div>
+      <label for="message-type">Message Type</label>
 
-            <select id="message-type" required>
-              <option value="">Select a message type</option>
+      <select id="message-type" required>
+        <option value="">Select a message type</option>
+        <option value="email">Email</option>
+        <option value="letter">Letter</option>
+        <option value="professional-message">Professional Message</option>
+        <option value="text-message">Text Message</option>
+        <option value="custom-message">Custom Message</option>
+      </select>
+    </div>
 
-              <option value="email">Email</option>
+    <!-- Tone -->
+    <div>
+      <label for="message-tone">Tone</label>
 
-              <option value="letter">Letter</option>
+      <select id="message-tone" required>
+        <option value="">Select a tone</option>
+        <option value="professional">Professional</option>
+        <option value="friendly">Friendly</option>
+        <option value="casual">Casual</option>
+        <option value="formal">Formal</option>
+        <option value="warm">Warm</option>
+        <option value="playful">Playful</option>
+      </select>
+    </div>
 
-              <option value="professional-message">Professional Message</option>
+    <!-- Message or Rough Notes -->
+    <div>
+      <label for="message-notes">
+        Enter your message or rough notes
+      </label>
 
-              <option value="text-message">Text Message</option>
+      <textarea
+        id="message-notes"
+        rows="10"
+        placeholder="Paste a message you'd like to rewrite or describe what you'd like the AI to write..."
+        required
+      ></textarea>
+    </div>
 
-              <option value="custom-message">Custom Message</option>
-            </select>
-          </div>
-          <!-- Tone -->
-          <div>
-            <label for="message-tone">Tone</label>
+    <!-- Recipient -->
+    <div>
+      <label for="recipient">
+        Recipient (Optional)
+      </label>
 
-            <select id="message-tone" required>
-              <option value="">Select a tone</option>
+      <input
+        type="text"
+        id="recipient"
+        placeholder="Example: Hiring Manager, Friend, Landlord"
+      />
+    </div>
 
-              <option value="professional">Professional</option>
+    <!-- Sender Name -->
+    <div>
+      <label for="sender-name">
+        Your Name or Signature (Optional)
+      </label>
 
-              <option value="friendly">Friendly</option>
+      <input
+        type="text"
+        id="sender-name"
+        placeholder="Example: Mickey"
+      />
+    </div>
 
-              <option value="casual">Casual</option>
+    <!-- Generate Button -->
+    <div>
+      <button type="submit" id="generate-button">
+        ✨ Generate Message
+      </button>
+    </div>
+  </form>
+</section>
 
-              <option value="formal">Formal</option>
+<!-- Generated Message -->
+<section class="result-section">
+  <div class="result-header">
+    <h2>Your Generated Message</h2>
 
-              <option value="warm">Warm</option>
+    <button type="button" id="copy-button" hidden>
+      Copy Message
+    </button>
+  </div>
 
-              <option value="playful">Playful</option>
-            </select>
-          </div>
-          <!-- Message or Rough Notes -->
-          <div>
-            <label for="message-notes">
-              Enter your message or rough notes
-            </label>
-
-            <textarea
-              id="message-notes"
-              rows="10"
-              placeholder="Paste a message you'd like to rewrite or describe what you'd like the AI to write..."
-              required
-            ></textarea>
-          </div>
-          <!-- Recipient -->
-          <div>
-            <label for="recipient"> Recipient (Optional) </label>
-
-            <input
-              type="text"
-              id="recipient"
-              placeholder="Example: Hiring Manager, Friend, Landlord"
-            />
-          </div>
-          <!-- Sender Name -->
-          <div>
-            <label for="sender-name"> Your Name or Signature (Optional) </label>
-
-            <input type="text" id="sender-name" placeholder="Example: Mickey" />
-          </div>
-          <!-- Generate Button -->
-        </form>
-      </section>
-      <!-- Generated Message -->
-      <div>
-        <button type="submit" id="generate-button">✨ Generate Message</button>
-      </div>
-      <section class="result-section">
-        <div class="result-header">
-          <h2>Your Generated Message</h2>
-
-          <button type="button" id="copy-button" hidden>Copy Message</button>
-        </div>
-
-        <div id="message-result" aria-live="polite">
-          Your generated message will appear here.
-        </div>
-      </section>
-    </main>
+  <div id="message-result" aria-live="polite">
+    Your generated message will appear here.
+  </div>
+</section>
 
     <!-- =========================
        Footer
