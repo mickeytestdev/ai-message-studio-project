@@ -1,7 +1,8 @@
 // =========================
 // API Configuration
 // =========================
-
+const apiKey = "530bfbaa583a1c4f65f472e27t9dbeo8";
+const apiUrl = "https://api.shecodes.io/ai/v1/generate";
 // =========================
 // DOM Elements
 // =========================
@@ -35,15 +36,24 @@ function handleFormSubmit(event) {
     senderName
   );
 
-  console.log(prompt);
+  const apiRequestUrl = buildApiRequestUrl(prompt);
+
+setLoadingState();
+
+fetch(apiRequestUrl)
+  .then(function (response) {
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+
+    return response.json();
+  })
+  .then(displayMessage)
+  .catch(handleApiError);
 }
 // =========================
 // Prompt Builder
 // =========================
-// =========================
-// Prompt Builder
-// =========================
-
 function buildPrompt(
   messageType,
   messageTone,
@@ -81,23 +91,90 @@ Writing requirements:
 - Do not include explanations, writing tips, or commentary.
 `.trim();
 }
+
+function buildApiRequestUrl(prompt) {
+  const context = `
+You are a professional writing assistant.
+
+Follow the user's requested message type and tone.
+Preserve the user's meaning and important details.
+Do not invent names, dates, promises, or personal information.
+Return only the completed message.
+`;
+
+  const parameters = new URLSearchParams({
+    prompt: prompt,
+    context: context,
+    key: apiKey,
+  });
+
+  return `${apiUrl}?${parameters.toString()}`;
+}
 // =========================
 // Loading State
 // =========================
+function setLoadingState() {
+  generateButton.disabled = true;
+  generateButton.textContent = "Composing...";
 
+  messageResult.textContent = "Composing your message...";
+  copyButton.hidden = true;
+}
 // =========================
 // Display Message
 // =========================
+function typeWriter(text) {
+  messageResult.textContent = "";
 
+  let index = 0;
+
+  const typingSpeed = 18;
+
+  const typing = setInterval(function () {
+    messageResult.textContent += text.charAt(index);
+
+    index++;
+
+    if (index >= text.length) {
+      clearInterval(typing);
+
+      copyButton.hidden = false;
+
+      generateButton.disabled = false;
+      generateButton.textContent = "✨ Generate Message";
+    }
+  }, typingSpeed);
+}
+
+function displayMessage(data) {
+  typeWriter(data.answer);
+}
 // =========================
 // Error Handling
 // =========================
+function handleApiError(error) {
+  console.error("API Error:", error);
 
+  messageResult.textContent =
+    "Something went wrong while generating your message. Please try again.";
+
+  generateButton.disabled = false;
+  generateButton.textContent = "✨ Generate Message";
+}
 // =========================
 // Copy Message
 // =========================
+function copyGeneratedMessage() {
+  navigator.clipboard.writeText(messageResult.textContent);
 
+  copyButton.textContent = "✓ Copied!";
+
+  setTimeout(function () {
+    copyButton.textContent = "Copy Message";
+  }, 2000);
+}
 // =========================
 // Event Listeners
 // =========================
 messageForm.addEventListener("submit", handleFormSubmit);
+copyButton.addEventListener("click", copyGeneratedMessage);
